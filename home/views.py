@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Department
 
 # Create your views here.
 def index(request):
@@ -21,4 +22,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 def department(request):
-    return render(request, 'department.html')
+    dic_dep = {
+        'dept' : Department.objects.all(),
+    }
+    return render(request, 'department.html', dic_dep)
